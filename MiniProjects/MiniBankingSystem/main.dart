@@ -15,6 +15,8 @@ void BankingSystem() {
 
     case "2":
       print(bank);
+    case "4":
+      exit(0);
     default:
       print("Invalid Operations");
   }
