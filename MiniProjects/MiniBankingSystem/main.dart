@@ -1,8 +1,11 @@
 import "dart:io";
 
-import "model/bank.dart";
+import "./utils/balance.dart";
 
 void BankingSystem() {
+  UserBalance balance = UserBalance();
+
+  stdout.writeln("---- Banking System ---- \n");
   stdout.writeln("1. Deposit ");
   stdout.writeln("2. Balance ");
   stdout.writeln("3. Withdraw ");
@@ -14,7 +17,7 @@ void BankingSystem() {
       print("Deposit");
 
     case "2":
-      print(bank);
+      balance.CheckBalance();
     case "4":
       exit(0);
     default:
