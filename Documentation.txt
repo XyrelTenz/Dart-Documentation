@@ -1,0 +1,269 @@
+DART FULL DOCUMENTATION NOTES (EXPANDED)
+
+This file contains an expanded explanation of Dart concepts. Each
+section has detailed descriptions, tips, and real-life analogies.
+
+------------------------------------------------------------
+1. VARIABLES AND TYPES
+------------------------------------------------------------
+Variables in Dart are like containers for values. Each container has
+rules on what it can store and how many times it can be changed.
+
+🔹 var
+- A variable whose type is inferred by Dart at the time of assignment.
+- Example: var age = 21; Dart knows 'age' is an int.
+- Once assigned, its type cannot be changed. So age = "twenty" is invalid.
+
+🔹 final
+- A variable that can be set only once. It is like writing your name
+on a permanent marker. Once written, it stays.
+- Example: final city = "Manila"; you cannot reassign city later.
+
+🔹 const
+- A compile-time constant. The value must be known before running
+the program.
+- Example: const pi = 3.14;
+- You cannot assign DateTime.now() to const because it is not known
+at compile time.
+
+🔹 late
+- Declares a variable that will be initialized later but before use.
+- Example: late String message; message = "Hello!";
+- Useful for expensive operations or when you want to assign values
+in constructors.
+
+🔹 dynamic
+- Can hold any type of value, like a shapeshifting box.
+- Example: dynamic x = 10; x = "Hello"; x = true;
+- Not recommended often because it removes type safety.
+
+🔹 Nullable types (?)
+- By default, Dart variables are non-nullable. If you want them
+to accept null, use '?'.
+- Example: String? name; name = null;
+
+------------------------------------------------------------
+2. CONTROL FLOW
+------------------------------------------------------------
+Control flow is how Dart decides which path to take in your program.
+
+🔹 if/else
+- Basic conditional branching.
+- Example: if (age > 18) print("Adult"); else print("Minor");
+
+🔹 switch/case
+- Used when you have multiple possible values for a variable.
+- Example:
+switch (grade) {
+  case "A": print("Excellent");
+  break;
+  case "B": print("Good");
+  break;
+  default: print("Try harder");
+}
+
+🔹 for loop
+- Traditional loop with a counter.
+- Example: for (int i = 0; i < 5; i++) print(i);
+
+🔹 for-in loop
+- Iterates over collections.
+- Example: for (var item in list) print(item);
+
+🔹 while loop
+- Runs as long as condition is true.
+- Example: while (x < 10) { x++; }
+
+🔹 do-while
+- Executes at least once.
+- Example: do { print("Run"); } while(false);
+
+------------------------------------------------------------
+3. FUNCTIONS
+------------------------------------------------------------
+Functions are reusable blocks of code. Dart functions can be simple
+or advanced.
+
+🔹 void function
+- Does not return anything.
+- Example: void greet() { print("Hello!"); }
+
+🔹 return type function
+- Specifies the return type.
+- Example: int add(int a, int b) { return a + b; }
+
+🔹 optional positional parameters
+- Enclosed in [].
+- Example: void greet([String name = "User"]) { print("Hello $name"); }
+
+🔹 named parameters
+- Enclosed in {}.
+- Example: void greet({String name = "User"}) { print("Hello $name"); }
+
+🔹 arrow functions
+- Shorthand for functions with a single expression.
+- Example: int square(int x) => x * x;
+
+🔹 higher-order functions
+- Accept functions as arguments or return functions.
+- Example: list.forEach((item) => print(item));
+
+------------------------------------------------------------
+4. OOP (CLASSES, OBJECTS, INHERITANCE)
+------------------------------------------------------------
+Dart supports full Object-Oriented Programming (OOP).
+
+🔹 class
+- Blueprint for objects.
+- Example: class Person { String name; Person(this.name); }
+
+🔹 constructor
+- Special method to initialize objects.
+- Example: Person(this.name);
+
+🔹 named constructors
+- Provide multiple ways to create objects.
+- Example: Car.old(this.brand) : year = 1990;
+
+🔹 super
+- Calls the parent class constructor or method.
+- Example: class Dog extends Animal { Dog(String name) : super(name); }
+
+🔹 super() : props
+- Initializes parent properties before the child constructor runs.
+
+🔹 polymorphism
+- Different classes implement the same method differently.
+- Example: Cat and Dog both override speak() differently.
+
+🔹 abstract class
+- Cannot be instantiated. Defines contracts.
+- Example: abstract class Shape { void draw(); }
+
+🔹 interface (implements)
+- Forces a class to implement all methods of another class.
+- Example: class Human implements Walker { @override void walk() {} }
+
+🔹 mixin (with)
+- Reuse code in multiple classes without inheritance.
+- Example: mixin Fly { void fly() => print("Flying"); }
+
+------------------------------------------------------------
+5. COLLECTIONS
+------------------------------------------------------------
+Collections store groups of data.
+
+🔹 List
+- Ordered collection, allows duplicates.
+- Example: var nums = [1, 2, 3];
+
+🔹 Set
+- Unordered collection, unique values only.
+- Example: var unique = {1, 2, 3};
+
+🔹 Map
+- Key-value pairs.
+- Example: var person = {"name": "John", "age": 30};
+
+🔹 spread operator (...)
+- Expands collections.
+- Example: var nums = [1, 2, ...[3, 4]];
+
+🔹 null-aware spread (...?)
+- Expands only if not null.
+
+🔹 collection if / for
+- Build collections with conditions.
+- Example: var list = [1, 2, if (addExtra) 3];
+
+------------------------------------------------------------
+6. ASYNC / AWAIT / FUTURES
+------------------------------------------------------------
+Dart is asynchronous by nature, using Futures.
+
+🔹 Future
+- Represents a value that will come later.
+- Example: Future<int> fetchData() async { return 42; }
+
+🔹 async
+- Marks a function that has asynchronous code.
+
+🔹 await
+- Waits for a Future to complete.
+
+🔹 then()
+- Alternative to await.
+
+🔹 try/catch with async
+- Handles errors gracefully.
+
+🔹 Streams
+- For handling multiple values asynchronously.
+- Example: Stream<int> counter() async* { yield 1; yield 2; }
+
+------------------------------------------------------------
+7. DART IO (FILES, DIRECTORY, HTTP, STDIN/STDOUT)
+------------------------------------------------------------
+The dart:io library provides file, directory, and network operations.
+
+🔹 File read/write
+- File("data.txt").writeAsString("Hello");
+- File("data.txt").readAsString();
+
+🔹 Directory
+- Create, list, or delete folders.
+- Example: Directory("demo").create();
+
+🔹 HttpServer
+- Start a simple HTTP server.
+- Example: HttpServer.bind("127.0.0.1", 8080);
+
+🔹 stdin/stdout
+- Read user input and print output.
+- stdout.write("Enter name: "); stdin.readLineSync();
+
+------------------------------------------------------------
+8. ADVANCED DART FEATURES
+------------------------------------------------------------
+Advanced tools make Dart powerful.
+
+🔹 const constructor
+- Creates compile-time objects.
+- Example: const Point(0, 0);
+
+🔹 enums
+- Fixed set of values.
+- Example: enum Color { red, green, blue }
+
+🔹 extension methods
+- Add methods to existing types.
+- Example: extension StringCap on String { String cap() => this[0].toUpperCase() + substring(1); }
+
+🔹 cascade operator (..)
+- Perform multiple operations on same object.
+- Example: person..name = "John"..age = 30..sayHello();
+
+------------------------------------------------------------
+9. MAIN FUNCTION
+------------------------------------------------------------
+The main entry point for Dart apps.
+
+🔹 main()
+- Every Dart program starts here.
+- Example: void main() { print("Hello Dart!"); }
+
+🔹 Future main
+- Async programs can use Future<void> main() async {}
+
+------------------------------------------------------------
+EXTRA NOTES
+------------------------------------------------------------
+- Dart is strongly typed but flexible with var and dynamic.
+- Use final for values that don't change, const for constants.
+- Prefer async/await over then() for readability.
+- OOP in Dart combines features of Java, C#, and more.
+- The cascade operator (..) is unique and very powerful.
+- Mixins allow composition over inheritance.
+- dart:io makes Dart usable for backend and scripting.
+
+End of Documentation.
