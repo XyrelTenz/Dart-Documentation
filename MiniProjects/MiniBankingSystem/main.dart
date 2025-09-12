@@ -16,6 +16,7 @@ void BankingSystem() {
   stdout.writeln("4. Exit ");
   String? operations = stdin.readLineSync();
 
+<<<<<<< HEAD
   switch (int.parse(operations!)) {
     case 1:
       deposit.Deposit();
@@ -29,6 +30,14 @@ void BankingSystem() {
       print("Thank You for Using our Bank System :>");
       return;
     //exit(0);
+=======
+  switch (operations) {
+    case "1":
+      print("Deposit");
+
+    case "2":
+      print(bank);
+>>>>>>> 0ffb273 (LazyGit)
     default:
       print("Invalid Operations");
   }
