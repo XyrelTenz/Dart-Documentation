@@ -1,9 +1,13 @@
 import "dart:io";
 
 import "./utils/balance.dart";
+import "./utils/deposit.dart";
+import "utils/withdraw.dart";
 
 void BankingSystem() {
-  UserBalance balance = UserBalance();
+  UserBalance balance = UserBalance(); //User Balance
+  UserDeposit deposit = UserDeposit();
+  UserWithdraw withdraw = UserWithdraw();
 
   stdout.writeln("---- Banking System ---- \n");
   stdout.writeln("1. Deposit ");
@@ -12,14 +16,19 @@ void BankingSystem() {
   stdout.writeln("4. Exit ");
   String? operations = stdin.readLineSync();
 
-  switch (operations) {
-    case "1":
-      print("Deposit");
-
-    case "2":
+  switch (int.parse(operations!)) {
+    case 1:
+      deposit.Deposit();
+      return;
+    case 2:
       balance.CheckBalance();
-    case "4":
-      exit(0);
+      return;
+    case 3:
+      withdraw.Withdraw();
+    case 4:
+      print("Thank You for Using our Bank System :>");
+      return;
+    //exit(0);
     default:
       print("Invalid Operations");
   }

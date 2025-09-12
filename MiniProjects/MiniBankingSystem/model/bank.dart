@@ -1,6 +1,6 @@
 class BankAccount {
   int Balance = 3000;
-  int? Amount = 1000;
+  int? Amount;
 
   void CheckBalance() {
     print("Balance ${Balance}");
@@ -13,6 +13,6 @@ class BankAccount {
 
   void Withdraw() {
     Balance -= Amount!;
-    print("New Balance ${Balance}");
+    print("Your new Balance ${Balance}");
   }
 }
