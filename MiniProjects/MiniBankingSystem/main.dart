@@ -12,7 +12,7 @@ void BankingSystem() {
   switch (operations) {
     case "1":
       print("Deposit");
-      
+
     case "2":
       print(bank);
     default:
