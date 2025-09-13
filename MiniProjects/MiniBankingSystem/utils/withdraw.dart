@@ -1,24 +1,22 @@
-import 'dart:io';
+import "dart:io";
 
-import '../main.dart';
-import '../model/bank.dart';
+import "../main.dart";
+import "../model/bank.dart";
 
 class UserWithdraw extends BankAccount {
+  UserWithdraw(BankAccount account) {
+    balance = account.balance;
+  }
+
   @override
-  Withdraw() {
-    stdout.writeln("----- Withdraw -----\n");
+  void withdraw(int amount) {
+    stdout.writeln("----- Withdraw -----");
     stdout.write("Enter Amount to Withdraw: ");
-    String? amount = stdin.readLineSync();
+    String? input = stdin.readLineSync();
 
-    if (int.parse(amount!) > Balance) {
-      print("Insufficient Balance");
-    } else {
-      Balance -= int.parse(amount);
-      final newBal = Balance;
+    int withdrawAmount = int.parse(input!);
+    super.withdraw(withdrawAmount);
 
-      print("Your new Balance is ${newBal}");
-    }
-
-    return BankingSystem();
+    return BankingSystem(this);
   }
 }

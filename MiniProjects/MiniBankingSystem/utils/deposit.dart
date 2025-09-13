@@ -4,18 +4,20 @@ import "../main.dart";
 import "../model/bank.dart";
 
 class UserDeposit extends BankAccount {
-  BankAccount bank = BankAccount();
+  // ✅ Constructor that forwards balance from existing account
+  UserDeposit(BankAccount account) {
+    balance = account.balance;
+  }
+
   @override
-  Deposit() {
-    stdout.writeln("----- Deposit -----\n");
-    stdout.write("Enter Ammout to Deposit: ");
-    String? ammout = stdin.readLineSync();
+  void deposit(int amount) {
+    stdout.writeln("----- Deposit -----");
+    stdout.write("Enter Amount to Deposit: ");
+    String? input = stdin.readLineSync();
 
-    bank.Balance += int.parse(ammout!);
-    final newBal = bank.Balance;
+    int depositAmount = int.parse(input!);
+    super.deposit(depositAmount);
 
-    print("Your new Balance is ${newBal}");
-
-    return BankingSystem();
+    return BankingSystem(this); // pass updated account back
   }
 }

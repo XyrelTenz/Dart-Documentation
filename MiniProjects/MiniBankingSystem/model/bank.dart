@@ -1,18 +1,21 @@
 class BankAccount {
-  int Balance = 3000;
-  int? Amount;
+  int balance = 3000;
 
-  void CheckBalance() {
-    print("Balance ${Balance}");
+  void deposit(int amount) {
+    balance += amount;
+    print("New Balance $balance");
   }
 
-  void Deposit() {
-    Balance += Amount!;
-    print("New Balance ${Balance}");
+  void withdraw(int amount) {
+    if (amount > balance) {
+      print("Insufficient Balance");
+    } else {
+      balance -= amount;
+      print("Your new Balance $balance");
+    }
   }
 
-  void Withdraw() {
-    Balance -= Amount!;
-    print("Your new Balance ${Balance}");
+  void checkBalance() {
+    print("Balance $balance");
   }
 }

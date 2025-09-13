@@ -2,9 +2,13 @@ import "../main.dart";
 import "../model/bank.dart";
 
 class UserBalance extends BankAccount {
-  void CheckBalance() {
-    print("Your Balance is ${Balance}");
+  UserBalance(BankAccount account) {
+    balance = account.balance;
+  }
 
-    return BankingSystem();
+  @override
+  void checkBalance() {
+    super.checkBalance();
+    return BankingSystem(this);
   }
 }
