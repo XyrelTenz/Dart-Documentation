@@ -12,7 +12,6 @@ int fibonacci(int n) {
 }
 
 void main() {
-  ListFunction();
   var result = fibonacci(5);
   print(result);
 }
