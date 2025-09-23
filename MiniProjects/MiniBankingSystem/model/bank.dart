@@ -11,6 +11,7 @@ class BankAccount {
       print("Insufficient Balance");
     } else {
       balance -= amount;
+      balance = balance - amount;
       print("Your new Balance $balance");
     }
   }
