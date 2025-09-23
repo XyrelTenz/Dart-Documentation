@@ -24,7 +24,7 @@ int binarySearch(int arr, int x){
 void main() {
 
   List<int> arr = {
-      1,2,3,4,5,6
+      1,1,3,4,5,6
     };
   int x =10;
   int result = binarySearch(arr, x);
